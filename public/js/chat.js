@@ -18,8 +18,6 @@ function scrollToBottom () {
   }
 }
 
-
-
 socket.on('connect',  function () {  //arrow function not supported except in Chrome
   var params = jQuery.deparam(window.location.search);
   console.log(params);
@@ -36,6 +34,15 @@ socket.on('connect',  function () {  //arrow function not supported except in Ch
 
 socket.on('disconnect', function () {
   console.log('Disconnected from server');
+});
+
+socket.on('updateUserList', function (users) {
+  var ol = jQuery('<ol></ol>');
+
+  users.forEach(function (user) {
+    ol.append(jQuery('<li></li>').text(user));
+  });
+  jQuery('#users').html(ol);
 });
 
 socket.on('newMessage', function(message) {

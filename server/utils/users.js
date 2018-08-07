@@ -8,11 +8,19 @@ class Users {
     return user;
   }
   removeUser (id) {
-//return user that was removed
-
+    var user = this.getUser(id);
+    // console.log(`User from getUser ${JSON.stringify(user)}`)
+    if (user) {
+      this.users = this.users.filter((user) => user.id !== id);
+      }
+      // console.log(`User array after filter : ${JSON.stringify(this.users)}`);
+      return user;
   }
   getUser (id) {
-
+  var user = this.users.filter((user) => user.id === id)[0];
+   //Andrew's solution returns [0] which would simplify test cases
+   // var user = this.users.filter((user) => user.id === id)[0];
+  return user;
   }
   getUserList (room) {
     var users = this.users.filter((user) => user.room === room);

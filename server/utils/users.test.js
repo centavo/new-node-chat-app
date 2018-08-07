@@ -34,18 +34,25 @@ describe('Users', () => {
     expect(testUsers.users).toEqual([user]);
   });
   it('should remove a user', () => {
-    
+    var resUser = testUsers.removeUser('1');
+    //need to read [0] as get in my version returns whole array
+    expect(resUser.id).toBe('1');
+    expect(testUsers.users.length).toBe(2);
   });
   it('should not remove a user', () => {
-
+    var resUser = testUsers.removeUser('123');
+    expect(resUser).toNotExist();
+    expect(testUsers.users.length).toBe(3);
   });
 
   it('should find user', () => {
-
+    var resUser = testUsers.getUser('2');
+    expect(resUser).toInclude({id: '2', name: 'Julie', room: 'React Course'});
   });
 
   it('should not find user', () => {
-
+    var resUser = testUsers.getUser('123');
+    expect(resUser).toNotExist();
   });
 
 
