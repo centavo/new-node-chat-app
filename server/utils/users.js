@@ -18,8 +18,7 @@ class Users {
   }
   getUser (id) {
   var user = this.users.filter((user) => user.id === id)[0];
-   //Andrew's solution returns [0] which would simplify test cases
-   // var user = this.users.filter((user) => user.id === id)[0];
+  
   return user;
   }
   getUserList (room) {
